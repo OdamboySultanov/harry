@@ -3,243 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAHMAL GROUP | Ipak Zavodi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>IDEA | THE ULTIMATE TECH DOMAIN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Syncopate:wght@400;700&family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --dark-green: #00332c;
-            --main-green: #00695c;
-            --pure-white: #ffffff;
-            --soft-white: #f4f7f6;
-            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --accent: #00f2ff;
+            --glitch-1: #ff00c1;
+            --bg-deep: #020202;
+            --card-glass: rgba(15, 15, 15, 0.85);
+            --transition-slow: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
-            background-color: var(--pure-white);
-            color: var(--dark-green);
-            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-deep);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
 
-        /* --- NAVIGATSIYA --- */
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+
+        /* --- Dynamic Navigation --- */
         nav {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 8%; background: rgba(255, 255, 255, 0.95);
-            position: fixed; width: 100%; z-index: 1000;
-            border-bottom: 1px solid #eee;
-            backdrop-filter: blur(10px);
+            padding: 25px 5%; background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(20px); position: fixed; width: 100%; z-index: 1000;
+            border-bottom: 1px solid rgba(0, 242, 255, 0.2);
         }
 
         .logo {
-            font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900;
-            color: var(--dark-green); text-transform: uppercase; letter-spacing: 2px;
+            font-family: 'Syncopate', sans-serif; font-size: 2.8rem; font-weight: 700;
+            letter-spacing: -2px; color: #fff; text-shadow: 0 0 15px var(--accent);
         }
 
         nav ul { display: flex; list-style: none; }
         nav ul li { margin-left: 40px; }
         nav ul li a { 
-            text-decoration: none; color: var(--dark-green); font-weight: 700; 
-            font-size: 1rem; transition: var(--transition);
+            text-decoration: none; color: #888; font-weight: 500; 
+            font-size: 1rem; text-transform: uppercase; transition: var(--transition-slow);
+            letter-spacing: 2px;
         }
-        nav ul li a:hover { color: var(--main-green); }
+        nav ul li a:hover { color: var(--accent); transform: scale(1.1); }
 
-        /* --- HERO --- */
+        /* --- Hero: Cinematographic --- */
         .hero {
             height: 100vh; display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(rgba(0,51,44,0.5), rgba(0,51,44,0.5)), 
-                        url('https://images.unsplash.com/photo-1615529182904-14819c35db37?q=80&w=2000') center/cover;
-            text-align: center; color: var(--pure-white);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), var(--bg-deep)),
+                        url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?q=80&w=2069') center/cover;
+            position: relative; overflow: hidden;
         }
 
+        .hero-content { z-index: 10; text-align: center; }
         .hero-content h1 { 
-            font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 7rem); 
-            margin-bottom: 20px; text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            font-family: 'Orbitron', sans-serif; font-size: 10vw; 
+            line-height: 0.8; margin-bottom: 20px;
+            background: linear-gradient(180deg, #fff 30%, var(--accent));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 30px rgba(0, 242, 255, 0.5));
         }
 
-        .hero-content p { font-size: 1.2rem; letter-spacing: 5px; font-weight: 300; }
+        /* --- Showcase Section (Rasmlar Juda Ko'p) --- */
+        .showcase { padding: 100px 5%; }
+        .section-tag { color: var(--accent); font-family: 'Orbitron'; font-size: 1.2rem; margin-bottom: 10px; display: block; }
+        .section-title { font-size: 4rem; font-family: 'Syncopate'; margin-bottom: 80px; }
 
-        /* --- KATALOG --- */
-        .section-title {
-            text-align: center; font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4.5rem); margin: 80px 0; color: var(--dark-green);
+        .big-stack { display: grid; grid-template-columns: 1fr; gap: 150px; }
+
+        .product-strip {
+            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center;
         }
 
-        .container { padding: 0 5%; }
+        .product-strip:nth-child(even) { grid-template-columns: 0.8fr 1.2fr; }
+        .product-strip:nth-child(even) .p-image { order: 2; }
 
-        .product-giant {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 0;
-            background: var(--soft-white); margin-bottom: 80px;
-            align-items: center; min-height: 600px;
+        .p-image {
+            position: relative; height: 700px; border-radius: 30px; overflow: hidden;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
         }
+        .p-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.5s; }
+        .p-image:hover img { transform: scale(1.1) rotate(1deg); }
 
-        .product-giant:nth-child(even) { direction: rtl; }
-        .product-giant:nth-child(even) .p-text { direction: ltr; }
+        .p-details { padding: 40px; }
+        .p-details h3 { font-family: 'Orbitron'; font-size: 3.5rem; margin-bottom: 20px; }
+        .p-details p { font-size: 1.4rem; color: #777; line-height: 1.8; margin-bottom: 40px; }
+        .p-price { font-size: 3rem; font-weight: 800; color: var(--accent); margin-bottom: 40px; display: block; }
 
-        .p-image { height: 100%; min-height: 400px; overflow: hidden; }
-        .p-image img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
-        .product-giant:hover .p-image img { transform: scale(1.05); }
-
-        .p-text { padding: 60px; }
-        .p-text h3 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 20px; }
-        .p-text p { font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 30px; }
-        .p-price { font-size: 2.5rem; font-weight: 800; color: var(--main-green); display: block; margin-bottom: 30px; }
-
-        /* --- TUGMA --- */
-        .btn-buy {
-            padding: 20px 50px; font-size: 1.1rem; font-weight: 800;
-            background: var(--dark-green); color: var(--pure-white);
-            border: none; cursor: pointer;
-            transition: var(--transition); text-transform: uppercase;
+        /* --- Cyber Buttons --- */
+        .cyber-btn {
+            position: relative; padding: 25px 60px; font-family: 'Orbitron'; font-size: 1.2rem;
+            color: #fff; background: transparent; border: 1px solid var(--accent);
+            cursor: pointer; overflow: hidden; transition: var(--transition-slow);
+            text-transform: uppercase;
         }
-        .btn-buy:hover { background: var(--main-green); letter-spacing: 2px; }
+        .cyber-btn::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: var(--accent); transition: var(--transition-slow); z-index: -1;
+        }
+        .cyber-btn:hover::before { left: 0; }
+        .cyber-btn:hover { color: #000; box-shadow: 0 0 40px var(--accent); }
 
-        /* --- MODAL --- */
+        /* --- Order Modal: Premium Layer --- */
         .modal {
-            display: none; position: fixed; inset: 0; background: rgba(0,51,44,0.9);
-            z-index: 2000; align-items: center; justify-content: center; padding: 20px;
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(15px); z-index: 9999; align-items: center; justify-content: center;
         }
         .modal-box {
-            background: var(--pure-white); width: 100%; max-width: 500px;
-            padding: 40px; text-align: center; position: relative;
+            background: #0a0a0a; width: 550px; padding: 60px; border: 1px solid #222;
+            border-radius: 40px; position: relative; text-align: center;
+            box-shadow: 0 0 100px rgba(0, 242, 255, 0.1);
         }
-        .modal-box h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 15px; }
-        .modal-box input, .modal-box textarea {
-            width: 100%; padding: 15px; margin: 10px 0; border: 1px solid #ddd;
-            font-size: 1rem; font-family: inherit; outline: none;
+        .modal-box h2 { font-family: 'Orbitron'; font-size: 2.5rem; color: var(--accent); margin-bottom: 10px; }
+        .modal-box input {
+            width: 100%; padding: 20px; margin: 15px 0; background: #111; border: 1px solid #333;
+            color: #fff; border-radius: 12px; font-size: 1.1rem; outline: none;
         }
+        .modal-box input:focus { border-color: var(--accent); }
 
-        /* --- FOOTER --- */
-        footer {
-            background: var(--dark-green); color: var(--pure-white);
-            padding: 80px 8%; text-align: center;
+        /* --- Gallery Section --- */
+        .gallery {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 100px 5%;
         }
-        .footer-logo { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 20px; }
-        .price-notice { 
-            display: inline-block; margin-top: 30px; padding: 15px 30px;
-            border: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem;
-        }
+        .gallery-item { height: 400px; overflow: hidden; border-radius: 15px; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; filter: grayscale(1); }
+        .gallery-item:hover img { filter: grayscale(0); transform: scale(1.1); }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 1024px) {
-            .product-giant { grid-template-columns: 1fr; }
-            .p-text { padding: 40px 20px; }
-            nav ul { display: none; } /* Mobil versiyada menyuni soddalashtirish uchun */
-        }
+        footer { padding: 100px 5%; border-top: 1px solid #111; text-align: center; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">Bahmal GROUP</div>
+        <div class="logo">IDEA</div>
         <ul>
-            <li><a href="#home">Asosiy</a></li>
-            <li><a href="#katalog">Kolleksiya</a></li>
-            <li><a href="#aloqa">Bog'lanish</a></li>
+            <li><a href="#home">Main</a></li>
+            <li><a href="#products">Hardware</a></li>
+            <li><a href="#gallery">Visuals</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>IPAK NAFISLIGI</h1>
-            <p>BAHMAL GROUP - PREMIUM SIFAT</p>
+            <span class="section-tag">PREMIUM SYSTEMS</span>
+            <h1>EVOLVE</h1>
         </div>
     </section>
 
-    <section id="katalog">
-        <h2 class="section-title">Bizning Mahsulotlar</h2>
-        
-        <div class="container">
-            <div class="product-giant">
+    <section class="showcase" id="products">
+        <div class="big-stack">
+            
+            <div class="product-strip">
                 <div class="p-image">
-                    <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=2071" alt="Silk Bedding">
+                    <img src="https://images.unsplash.com/photo-1587202377425-8b90d5dce452?q=80&w=2070" alt="Super PC">
                 </div>
-                <div class="p-text">
-                    <h3>Ipak Choyshablar</h3>
-                    <p>100% tabiiy ipakdan tayyorlangan "Premium" prastinalar. Marg'ilon ipak zavodining eng saralangan matolaridan tikilgan.</p>
-                    <span class="p-price">5,200,000 so'm</span>
-                    <button class="btn-buy" onclick="openModal('Ipak Choyshablar', '5,200,000')">BUYURTMA BERISH</button>
+                <div class="p-details">
+                    <span class="section-tag">01 / WORKSTATIONS</span>
+                    <h3>QUANTUM X</h3>
+                    <p>RTX 5090 Ready | Threadripper Pro. O'ta yuqori` quvvat va misli ko'rilmagan dizayn uyg'unligi.</p>
+                    <span class="p-price">25,400,000 so'm</span>
+                    <button class="cyber-btn" onclick="openOrder('QUANTUM X', '85,400,000')">Sotib olish</button>
                 </div>
             </div>
 
-            <div class="product-giant">
+            <div class="product-strip">
                 <div class="p-image">
-                    <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=2000" alt="Silk Pillows">
+                    <img src="https://images.unsplash.com/photo-1614624532983-4ce03382d63d?q=80&w=2000" alt="Minimalist Setup">
                 </div>
-                <div class="p-text">
-                    <h3>Ipak Yostiqlar</h3>
-                    <p>Tabiiy ipak tolasi bilan to'ldirilgan yostiqlar. Antiallergen xususiyatga ega, yuz terisini yoshartiradi.</p>
-                    <span class="p-price">1,800,000 so'm</span>
-                    <button class="btn-buy" onclick="openModal('Ipak Yostiqlar', '1,800,000')">BUYURTMA BERISH</button>
+                <div class="p-details">
+                    <span class="section-tag">02 / MINIMALISM</span>
+                    <h3>IDEA AIR</h3>
+                    <p>Dizaynerlar va ijodkorlar uchun maxsus sozlangan, dunyodagi eng nafis ishchi stansiyasi.</p>
+                    <span class="p-price">32,000,000 so'm</span>
+                    <button class="cyber-btn" onclick="openOrder('IDEA AIR', '32,000,000')">Sotib olish</button>
                 </div>
             </div>
+
+            <div class="product-strip">
+                <div class="p-image">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070" alt="Gaming Setup">
+                </div>
+                <div class="p-details">
+                    <span class="section-tag">03 / ESPORTS</span>
+                    <h3>GLITCH G-1</h3>
+                    <p>Eng yuqori kadrlar chastotasi (FPS) uchun yaratilgan professional o'yin tizimi.</p>
+                    <span class="p-price">45,000,000 so'm</span>
+                    <button class="cyber-btn" onclick="openOrder('GLITCH G-1', '45,000,000')">Sotib olish</button>
+                </div>
+            </div>
+
         </div>
-        <div class="product-giant">
-                <div class="p-image">
-                    <img src="unnamed.png" alt="Bahmal Group ipak tolasidan mato va turli xil  yostiq choyshapva kiyimlarni tayyorlaydiga katta zavot">
-                    
-                </div>
+    </section>
 
+    <section class="gallery" id="gallery">
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?q=80&w=500"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1603481546238-487240415921?q=80&w=500"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=500"></div>
+        <div class="gallery-item"><img src="images.jpg"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1616588589676-62b3bd4ff6d2?q=80&w=500"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=500"></div>
+       
     </section>
 
     <div id="orderModal" class="modal">
         <div class="modal-box">
-            <h2 id="modalTitle"></h2>
-            <p id="modalPrice" style="font-size: 1.5rem; color: var(--main-green); font-weight: 800; margin-bottom: 20px;"></p>
-            <input type="text" id="userName" placeholder="Ismingiz">
-            <input type="tel" id="userPhone" placeholder="Telefon raqamingiz">
-            <textarea id="userAddress" rows="3" placeholder="Manzilingiz"></textarea>
-            <button class="btn-buy" style="width: 100%; margin-top: 10px;" onclick="sendOrder()">TASDIQLASH</button>
-            <p style="margin-top: 20px; cursor: pointer; color: #888; font-size: 0.9rem;" onclick="closeModal()">Yopish</p>
+            <span style="position:absolute; right:30px; top:20px; cursor:pointer; font-size:2rem;" onclick="closeOrder()">&times;</span>
+            <h2 id="orderTitle"></h2>
+            <p id="orderPrice" style="font-size: 2rem; color: #fff; margin-bottom: 30px;"></p>
+            <input type="text" id="name" placeholder="Ismingiz">
+            <input type="tel" id="tel" placeholder="Telefon raqam">
+            <input type="text" id="address" placeholder="Manzilingiz">
+            <br><br>
+            <button class="cyber-btn" style="width: 100%;" onclick="sendOrder()">Buyurtmani Tasdiqlash</button>
         </div>
     </div>
-    
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.340459872171!2d60.597083276549476!3d41.56236258512292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x41dfc93ed93771f3%3A0xd1f46d96a3658f4c!2sBAHMAL%20GROUP!5e1!3m2!1sen!2s!4v1776494471154!5m2!1sen!2s"   width="700" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-    <footer id="aloqa">
-        <div class="footer-logo">Bahmal Group</div>
-        <p>O'zbekistonning eng yirik ipak ishlab chiqarish majmuasi.</p>
-        <p style="margin-top: 15px; font-weight: 600;">Tel: +998 90 123 45 67</p>
-        <p>Manzil: Marg'ilon sh., Ipakchilar ko'chasi</p>
-        
-        <span class="price-notice">
-            BOSHQA MODELLAR NARXI TELEFON ORQALI MA'LUM QILINADI
-        </span>
+    <footer id="contact">
+        <div class="logo" style="font-size: 5rem; opacity: 0.1; margin-bottom: -40px;">IDEA</div>
+        <p>Copyright &copy; 2026 IDEA . Next-Gen Computing.</p>
     </footer>
-
+    
+<footer id="contact">
+        <div class="logo" style="font-size: 5rem; opacity: 0.1; margin-bottom: -40px;">IDEA</div>
+        <p>Call us for the prices of other models.</p>
+    </footer>
     <script>
-        const modal = document.getElementById('orderModal');
-
-        function openModal(title, price) {
-            modal.style.display = 'flex';
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalPrice').innerText = price + " so'm";
+        function openOrder(title, price) {
+            document.getElementById('orderModal').style.display = 'flex';
+            document.getElementById('orderTitle').innerText = title;
+            document.getElementById('orderPrice').innerText = price + " so'm";
         }
 
-        function closeModal() {
-            modal.style.display = 'none';
+        function closeOrder() {
+            document.getElementById('orderModal').style.display = 'none';
         }
 
         function sendOrder() {
-            const name = document.getElementById('userName').value;
-            const phone = document.getElementById('userPhone').value;
-            const address = document.getElementById('userAddress').value;
-
-            if(name && phone && address) {
-                alert(`Rahmat, ${name}!\nBuyurtmangiz qabul qilindi.`);
-                closeModal();
+            const name = document.getElementById('name').value;
+            const tel = document.getElementById('tel').value;
+            const addr = document.getElementById('address').value;
+            
+            if(name && tel && addr) {
+                alert(`Rahmat, ${name}!\n\nBuyurtmangiz qabul qilindi.\nTez orada ${tel} raqamiga bog'lanamiz.`);
+                closeOrder();
             } else {
                 alert("Iltimos, barcha maydonlarni to'ldiring!");
             }
         }
 
-        // Modal tashqarisini bossa yopish
-        window.onclick = function(event) {
-            if (event.target == modal) closeModal();
+        // Modal tashqarisini bossa yopilish
+        window.onclick = function(e) {
+            if(e.target == document.getElementById('orderModal')) closeOrder();
         }
     </script>
-
 </body>
 </html>
